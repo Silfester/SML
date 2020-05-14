@@ -1,33 +1,45 @@
 <template>
-  <div>
+  <div class="justify-content-center text-center">
+    <b-row class="justify-content-center">
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group
         id="input-group-1"
-        label="Email address:"
         label-for="input-1"
-        description="We'll never share your email with anyone else."
+        description="Sľubujeme, že Váš email bude u nás v bezpečí."
       >
         <b-form-input
           id="input-1"
           v-model="form.email"
           type="email"
           required
-          placeholder="Enter email"
+          placeholder="Váš email"
+          autofocus
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+      <b-form-group id="input-group-2" label-for="input-2">
         <b-form-input
           id="input-2"
           v-model="form.name"
           required
-          placeholder="Enter name"
+          placeholder="Vaše meno"
         ></b-form-input>
       </b-form-group>
+      
+      <b-form-group id="input-group-3"  label-for="input-3">
+        <b-form-textarea
+          id="input-3"
+          v-model="form.message"
+          required
+          placeholder="Vaša správa"
+                rows="6"
+      max-rows="8"
+        ></b-form-textarea>
+      </b-form-group>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button type="reset" variant="danger">Reset</b-button>
+      <b-button type="submit" variant="primary">Odoslať</b-button>
     </b-form>
+    </b-row>
   </div>
 </template>
 
@@ -55,6 +67,7 @@
         // Reset our form values
         this.form.email = ''
         this.form.name = ''
+        this.form.message = ''
         this.form.food = null
         this.form.checked = []
         // Trick to reset/clear native browser form validation state

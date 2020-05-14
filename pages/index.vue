@@ -1,16 +1,11 @@
 <template>
 <div>
-        <!--------->
         <!-- Navigation-->
-        <!--------->
 
         <Navbar/>
         <Logo/>
 
-        <!--------->
         <!-- Land-->
-        <!--------->
-
         <header class="land">
             <div class="container h-100">
                 <div class="row h-100 align-items-left justify-content-left text-left">
@@ -28,7 +23,8 @@
         <!-- About---------------------------------------------------------------------------------------------------------------------------->
         <!------------------------------------------------------------------------------------------------------------------------------------>
 
-        <section class="page-section" id="about">
+        <section class="page-section" id="about" data-aos="fade-up" data-aos-duration="1500" >
+          <div v-b-visible="visabout">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
@@ -38,16 +34,17 @@
                     </div>
                 </div>
             </div>
+            </div>
         </section>
 
         <!--------->
         <!-- Services-->
         <!--------->
         <section class="page-section" id="proces1">
-        <div class="container h-100">
+        <div class="container h-100" data-aos="fade-up" data-aos-duration="1500" v-b-visible="visproces1">
             <div class="row h-100 align-items-center justify-content-center text-center">
               <div class="col">
-                <img src="../static/bg-anal.png" alt="">
+                <b-img-lazy img src="../static/bg-anal.png" alt=""></b-img-lazy>
               </div>
               <div class="col">
                 <h1>Analýza a stratégia</h1>
@@ -69,7 +66,7 @@
           </div>
           </section>
           <section class="page-section" id="proces2">
-            <div class="container h-100">
+<div class="container h-100" data-aos="fade-up" data-aos-duration="1500">
             <div class="row h-100 align-items-center justify-content-center text-center">
               
               <div class="col">
@@ -88,17 +85,17 @@
                 </ul>
               </div>
               <div class="col">
-                <img src="../static/bg-anal.png" alt="">
+                <b-img-lazy img src="../static/bg-anal.png" alt=""></b-img-lazy>
               </div>
 
               </div>
             </div>
           </section>
-          <section class="page-section" id="proces3">
-            <div class="container h-100">
+          <section class="page-section" id="proces3"  v-b-visible="visproces3">
+            <div class="container h-100" data-aos="fade-up" data-aos-duration="1500">
             <div class="row h-100 align-items-center justify-content-center text-center">
               <div class="col">
-                <img src="../static/bg-anal.png" alt="">
+                <b-img-lazy img src="../static/bg-anal.png" alt=""></b-img-lazy>
               </div>
               <div class="col">
                 <h1>Analýza a stratégia</h1>
@@ -120,7 +117,7 @@
             </div>
           </section>
           <section class="page-section" id="proces4">
-            <div class="container h-100">
+            <div class="container h-100" data-aos="fade-up" data-aos-duration="1500">
             <div class="row h-100 align-items-center justify-content-center text-center">
               
               <div class="col">
@@ -139,7 +136,7 @@
                 </ul>
               </div>
               <div class="col">
-                <img src="../static/bg-anal.png" alt="">
+                <b-img-lazy img src="../static/bg-anal.png" alt=""></b-img-lazy>
               </div>
 
               </div>
@@ -148,16 +145,23 @@
         
         <!-- Call to action---------------------------------------------------------------------------------------------------------------->
         
-        <section class="page-section bg-dark text-white">
+        <section id="Kontakt" class="page-section bg-dark text-white" data-aos="fade-up" data-aos-duration="1500" v-b-visible="viskontakt">
+          <div v-b-visible="viskontakt">
             <div class="container text-center">
                 <h2 class="mb-4">Ešte nejaké milé blábolčeky o nás</h2>
-                <a class="btn btn-light btn-xl" href="">Napíšte nám!</a>
+                 <b-button v-b-toggle.collapse-2 class="m-1">Napíšte nám</b-button>
+                   <b-collapse id="collapse-2">
+                    <b-card class="bg-dark text-white">
+                    <Subscribe />
+                  </b-card>
+                   </b-collapse>                
+            </div>
             </div>
         </section>
 
         <!-- Footer-->
         <footer class="bg-light py-5">
-            <div class="container"><div class="small text-center text-muted">Copyright © 2020 - SML Agency</div></div>
+            <div class="container"><div class="small text-center text-muted">Copyright © 2020 - SML Studio</div></div>
         </footer>
 </div>
 
@@ -167,11 +171,12 @@
 <script>
     import Logo from '~/components/Logo.vue'
     import Navbar from '~/components/Navbar.vue'
-
+    import Subscribe from '~/components/Subscribe.vue'
 export default {
   components: {
 Logo,
-Navbar
+Navbar,
+Subscribe
 
   },
     data: function () {
@@ -182,11 +187,47 @@ Navbar
       ],
       index: null
     };
+  }
+    ,methods: {
+    visproces1(isVisible) {
+      if (isVisible) {
+        document.body.style.backgroundColor = "#EF476F"; 
+      } else {
+        document.body.style.backgroundColor = "white"; 
+      }
+    },
+    visproces3(isVisible) {
+      if (isVisible) {
+        document.body.style.backgroundColor = "#118AB2"; 
+      } else {
+        document.body.style.backgroundColor = "white"; 
+      }
+    },
+       visabout(isVisible) {
+      if (isVisible) {
+        document.body.style.backgroundColor = "black"; 
+      } else {
+        document.body.style.backgroundColor = "white"; 
+      }
+    },
+        viskontakt(isVisible) {
+      if (isVisible) {
+        document.body.style.backgroundColor = "#343a40"; 
+      } else {
+        
+      }
+    },
+    
   },
 };
 </script>
 
-<style>
+<style lang="scss">
+
+body {
+transition: background-color 2s ease;
+
+}
 
 .page-section {
   padding: 8rem 0;

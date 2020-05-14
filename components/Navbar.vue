@@ -10,10 +10,10 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto" id="navtext">
-          <b-nav-item href="#">Domov</b-nav-item>
-          <b-nav-item href="#">Služby</b-nav-item>
-          <b-nav-item href="#">Proces</b-nav-item>
-          <b-nav-item href="#">Kontakt</b-nav-item>
+          <b-nav-item href="#land">Domov</b-nav-item>
+          <b-nav-item href="#about">Služby</b-nav-item>
+          <b-nav-item href="#proces1">Proces</b-nav-item>
+          <b-nav-item href="#Kontakt">Kontakt</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
