@@ -1,6 +1,9 @@
 
+
 export default {
   mode: 'universal',
+  env: {  
+    strapiBaseUri: process.env.API_URL || "http://localhost:1337"},
   /*
   ** Headers of the page
   */
@@ -50,7 +53,15 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/apollo',
   ],
+  apollo: {  
+    clientConfigs: {
+      default: {
+        httpEndpoint: process.env.BACKEND_URL || "http://localhost:1337/graphql"
+      }
+    }
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
